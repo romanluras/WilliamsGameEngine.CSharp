@@ -1,24 +1,24 @@
-﻿using GameEngine;
+﻿using GameEngine; //roman luraschi period 3
 
 namespace MyGame
 {
-    static class MyGame
+    static class FlappyBirdGame
     {
-        private const int WindowWidth = 800;
+        private const int WindowWidth = 1000;
         private const int WindowHeight = 600;
 
-        private const string WindowTitle = "My Awesome Game";
+        private const string WindowTitle = "Flappy Bird";
 
         private static void Main(string[] args)
         {
-            // Initialize the game.
+            //initialize the game.
             Game.Initialize(WindowWidth, WindowHeight, WindowTitle);
 
-            // Create our scene.
+            //create scene.
             GameScene scene = new GameScene();
             Game.SetScene(scene);
 
-            // Run the game loop.
+            //run the game loop.
             Game.Run();
         }
     }

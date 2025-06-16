@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using SFML.Audio;
 using SFML.Graphics;
 using SFML.System;
@@ -70,11 +71,20 @@ namespace GameEngine
         {
             Texture texture;
 
-            if (Textures.TryGetValue(fileName, out texture)) return texture;
+            if (Textures.TryGetValue(fileName, out texture))
+                return texture;
 
-            texture = new Texture(fileName);
-            Textures[fileName] = texture;
-            return texture;
+            try
+            {
+                texture = new Texture(fileName);  // Load the texture
+                Textures[fileName] = texture;
+                return texture;
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine($"Error: Failed to load texture from file {fileName}");
+                return null;  // Return null or handle the error appropriately
+            }
         }
 
         // Get a sound from a file
